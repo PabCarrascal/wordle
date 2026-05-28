@@ -10,6 +10,15 @@ let isAnimating = false;
 let guessResults = [];
 let lastAttempts = null;
 
+function startNextWord() {
+  guessResults = [];
+  lastAttempts = null;
+  game.startNewGame();
+  ui.renderBoard();
+  keyboard.renderKeyboard(handleKey);
+  ui.renderCurrentInput(0, '');
+}
+
 function applyTheme(theme) {
   document.body.dataset.theme = theme;
   localStorage.setItem(STORAGE_THEME, theme);
@@ -66,11 +75,11 @@ async function handleKey(key) {
       stats.recordGame('won', lastAttempts);
       ui.animateBounce(row);
       ui.showToast(WIN_MESSAGES[lastAttempts - 1] || '¡Ganaste!', 2000);
-      setTimeout(() => stats.showStatsModal(lastAttempts), 2000);
+      setTimeout(startNextWord, 2500);
     } else if (newState.status === 'lost') {
       stats.recordGame('lost', 0);
       ui.showToast(newState.answer.toUpperCase(), 3000);
-      setTimeout(() => stats.showStatsModal(null), 3500);
+      setTimeout(startNextWord, 3500);
     }
     return;
   }
@@ -126,7 +135,7 @@ function init() {
   if (state.status === 'playing') {
     ui.renderCurrentInput(state.guesses.length, state.currentInput);
   } else {
-    setTimeout(() => stats.showStatsModal(lastAttempts), 500);
+    startNextWord();
   }
 
   document.addEventListener('keydown', handleKeyDown);

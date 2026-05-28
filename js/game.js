@@ -139,3 +139,22 @@ export function evaluatePriorGuesses() {
     letters: evaluateGuess(guess, state.answer),
   }));
 }
+
+export function startNewGame() {
+  const words = window.ANSWER_WORDS;
+  const currentAnswer = state ? state.answer : null;
+  let newAnswer;
+  do {
+    newAnswer = words[Math.floor(Math.random() * words.length)];
+  } while (newAnswer === currentAnswer && words.length > 1);
+
+  state = {
+    date: todayString(),
+    guesses: [],
+    currentInput: '',
+    status: 'playing',
+    answer: newAnswer,
+  };
+  persistState();
+  return { ...state };
+}
