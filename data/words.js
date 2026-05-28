@@ -169,6 +169,21 @@ window.ANSWER_WORDS = [
   // ── Z ────────────────────────────────────────────────────────────────
   "zafio","zafra","zaino","zambo","zanco","zanja","zarpa","zarza",
   "zonas","zorra","zorro","zumba","zurdo",
+  // ── Palabras adicionales ─────────────────────────────────────────────
+  "abril","acaso","adobe","amago","arduo","atomo","atroz",
+  "bombo","bulla","buque",
+  "cacho","caida","catre","chino","circo","citar","cobre","colar","curro","curso",
+  "danar",
+  "epico","euros",
+  "feria","firme",
+  "jaleo","jurar",
+  "latir","manso","manto","marzo","matar","migas",
+  "nacar","negar","otono",
+  "panal","panel","parto","paseo","pegar","penco","pieza","pilon","pique","prole","prosa",
+  "rajar","rampa","rejon","rodar","rosal","rubor","rugby","ruina",
+  "saeta","santo","secar","segar","serie","suave",
+  "tacto","tapas","tedio","tenor","tenue","tibia","toreo","toril","torta","tosco","toser","trote",
+  "varon","verja","viril","viudo",
 ];
 
 // Palabras válidas como intento — nunca serán la respuesta del día
@@ -286,6 +301,23 @@ window.VALID_WORDS = [
   "abard","abare","abari","abaro","abart","abate","abati","abato","abaua",
   "abauj","abavo","abaxi","abazo","abeba","abece","abeja","abele","abeli",
   "abelo","abema","abena","abene","abeni","abeno","abenz","abera","abere",
+  // ── B-Z válidas ──────────────────────────────────────────────────────
+  "bajel","banar","bocal","bonzo","borla","borra","bosco",
+  "calda","calza","calzo","caqui","casca","cavea","citas","colza","compa","corba","cornu","craso","criba","cubil","cunea",
+  "dente","dobla","dueno",
+  "egida","erial","estay","estor",
+  "farsa","fasto","feraz","fenix","filon","fisga","flaco","flema","flojo","flota","flujo","fosco","foton","fraga","fundo","furor",
+  "helar","helio","herir","hilar","horca","huida",
+  "idolo","ingles","istmo",
+  "joker","jumbo",
+  "lacar","lacra","larva","lusco",
+  "magma","masca","maslo","menda","menso","mimar","minar","mingo","mocho","mojon","morsa","mugir","musgo","munon",
+  "nardo","narco","nopal","nublo","nuera","numen",
+  "obeso","omega","otero","pavon","pacer","palmo","pargo","parla","piton","plena","pompa","porto","posma","potra","potro","pozal","prior","probo","pudor","punal","purga",
+  "quedo","quimo",
+  "ralar","raudo","redil","repro","resol","ringo","rizos","rural",
+  "sazon","segur","semen","serba","serbo","signo","silva","sirga","sirio","sirla","sopor","tauro","teson",
+  "vejez","velon","virgo","xenon","yanki",
 ];
 
 // Deduplicar y validar longitud exacta de 5 letras ASCII
