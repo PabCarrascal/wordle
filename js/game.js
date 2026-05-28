@@ -20,7 +20,7 @@ function randomAnswer() {
 export function isValidWord(word) {
   const w = normalizeWord(word);
   if (w.length !== 5) return false;
-  return window.ANSWER_WORDS.includes(w) || window.VALID_WORDS.includes(w);
+  return window.ANSWER_WORDS.includes(w);
 }
 
 function evaluateGuess(guess, answer) {
