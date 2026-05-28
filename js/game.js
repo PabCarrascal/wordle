@@ -1,7 +1,6 @@
 // Pure game logic — no DOM access.
 // Reads window.ANSWER_WORDS and window.VALID_WORDS (set by data/words.js).
 
-const EPOCH = new Date('2024-01-01T00:00:00-06:00');
 const STORAGE_STATE = 'palabrle_state';
 
 let state = null;
@@ -13,21 +12,9 @@ export function normalizeWord(word) {
     .replace(/[^a-z]/g, '');
 }
 
-function todayString() {
-  const now = new Date();
-  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-}
-
-export function getDayIndex() {
-  const now = new Date();
-  const dayMs = 86_400_000;
-  return Math.floor((now - EPOCH) / dayMs);
-}
-
-export function getTodayAnswer() {
+function randomAnswer() {
   const words = window.ANSWER_WORDS;
-  if (!words || words.length === 0) throw new Error('Lista de palabras no cargada');
-  return words[getDayIndex() % words.length];
+  return words[Math.floor(Math.random() * words.length)];
 }
 
 export function isValidWord(word) {
@@ -64,11 +51,10 @@ function evaluateGuess(guess, answer) {
 
 function freshState() {
   return {
-    date: todayString(),
     guesses: [],
     currentInput: '',
     status: 'playing',
-    answer: getTodayAnswer(),
+    answer: randomAnswer(),
   };
 }
 
@@ -77,7 +63,7 @@ export function initGame() {
   if (raw) {
     try {
       const saved = JSON.parse(raw);
-      if (saved.date === todayString()) {
+      if (saved.status === 'playing' && Array.isArray(saved.guesses) && saved.answer) {
         state = saved;
         return { ...state };
       }
@@ -141,15 +127,13 @@ export function evaluatePriorGuesses() {
 }
 
 export function startNewGame() {
-  const words = window.ANSWER_WORDS;
   const currentAnswer = state ? state.answer : null;
   let newAnswer;
   do {
-    newAnswer = words[Math.floor(Math.random() * words.length)];
-  } while (newAnswer === currentAnswer && words.length > 1);
+    newAnswer = randomAnswer();
+  } while (newAnswer === currentAnswer && window.ANSWER_WORDS.length > 1);
 
   state = {
-    date: todayString(),
     guesses: [],
     currentInput: '',
     status: 'playing',
